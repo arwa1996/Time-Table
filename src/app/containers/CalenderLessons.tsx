@@ -1,11 +1,18 @@
 import React, { useState } from "react";
 import { Calendar, Event, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
-import { GetAllLessons } from "../pages/HomePage/data/__generated__/GetAllLessons";
+import { GetAllLessons } from "./data/__generated__/GetAllLessons";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
-import { ModalLessons } from "./ModalLessons";
+import { ModalLessons } from "../components/ModalLessons";
 import { FormLessons } from "./FormLessons";
+import { useMutation } from "@apollo/client";
+import {
+  GET_All_LESSONS,
+  REMOVE_LESSON,
+  UPDATE_LESSON,
+  MOVE_LESSON,
+} from "./data/";
 
 type calenderProps = {
   lessonsList: GetAllLessons;
@@ -33,9 +40,13 @@ export const CalenderLessons: React.FC<calenderProps> = ({ lessonsList }) => {
       });
   });
 
-  console.log("lessons", lessons);
+  console.log("lessons", lessonsList);
+  // const [deleteLessonsMutation] = useMutation(REMOVE_LESSON);
+  // const [updateLessonsMutation] = useMutation(UPDATE_LESSON);
+  // const [moveLessonsMutation] = useMutation(MOVE_LESSON);
 
-  const createLessons = (start: Date | string, end: Date | string): void => {
+  const sendStartEndDate = (start: Date | string, end: Date | string): void => {
+    console.log(start, end);
     setCreateLesson(true);
     //open modal
     setIsModalVisible(true);
@@ -54,6 +65,38 @@ export const CalenderLessons: React.FC<calenderProps> = ({ lessonsList }) => {
     //send id to the form so it can be displayed
     setSelectedEvent(event);
     //then I will retrive the data of that event( here is where we call the muatation ? )
+
+    //delete mutation ( the id has a wired behavior)
+
+    // console.log(~~selectedEvent?.resource.id, selectedEvent?.resource.id);
+    // let eventId: number = ~~selectedEvent?.resource.id;
+    // deleteLessonsMutation({
+    //   variables: { id: eventId },
+    //   refetchQueries: [GET_All_LESSONS, "GetAllLessons"],
+    // });
+
+    // update Mutation
+
+    // updateLessonsMutation({
+    //   variables: {
+    //     id: ~~selectedEvent?.resource.id,
+    //     //title: data?.title,
+    //     description: "description update",
+    //     subject: "update",
+    //     // start: selectedEvent?.start,
+    //     //  end: selectedEvent?.end,
+    //   },
+    // });
+
+    //Move mutation
+    // moveLessonsMutation({
+    //   variables: {
+    //     id: ~~selectedEvent?.resource.id,
+    //     start:
+    //       "Sat Feb 19 2022 16:00:00 GMT+0200 (Eastern European Standard Time)",
+    //     end: "Sat Feb 19 2022 16:30:00 GMT+0200 (Eastern European Standard Time)",
+    //   },
+    // });
   };
 
   return (
@@ -67,7 +110,7 @@ export const CalenderLessons: React.FC<calenderProps> = ({ lessonsList }) => {
         startAccessor="start"
         endAccessor="end"
         style={{ height: 500 }}
-        onSelectSlot={(event) => createLessons(event.start, event.end)}
+        onSelectSlot={(event) => sendStartEndDate(event.start, event.end)}
         onSelectEvent={(event) => updateLessons(event)}
       />
       <ModalLessons

@@ -6,6 +6,7 @@ export const GET_All_LESSONS = gql`
       id
       title
       description
+      subject
       start
       end
     }
