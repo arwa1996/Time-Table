@@ -5,14 +5,10 @@ import { CREATE_LESSON, GET_All_LESSONS } from "./data";
 import { FormLessons } from "../components/FormLessons";
 
 type FormProps = {
-  title: string;
-  subject: string;
-  description: string;
   lessons: Event[];
   start: string | undefined;
   end: string | undefined;
   closeModal: () => void;
-  selectedEvent?: Event;
 };
 
 export const FormCreateLessons: React.FC<FormProps> = ({

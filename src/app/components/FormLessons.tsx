@@ -9,7 +9,7 @@ type FormProps = {
   closeModal: () => void;
   selectedEvent?: Event;
   onSubmit: (data: any) => void;
-  lessons: Event[];
+  lessons?: Event[];
 };
 
 const layout = {
