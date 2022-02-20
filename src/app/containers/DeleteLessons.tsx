@@ -12,7 +12,7 @@ type FormProps = {
   confirm: ModalFunc;
 };
 
-export const FormDeleteLessons: React.FC<FormProps> = ({
+export const DeleteLessons: React.FC<FormProps> = ({
   selectedEvent,
   closeModal,
   confirm,

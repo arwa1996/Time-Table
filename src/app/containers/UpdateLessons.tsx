@@ -1,36 +1,33 @@
 import * as React from "react";
 import { Event } from "react-big-calendar";
 import { useMutation } from "@apollo/client";
-import { CREATE_LESSON, GET_All_LESSONS } from "./data";
+import { GET_All_LESSONS, UPDATE_LESSON } from "./data";
 import { FormLessons } from "../components/FormLessons";
 
 type FormProps = {
-  lessons: Event[];
-  start: string | undefined;
-  end: string | undefined;
   closeModal: () => void;
+  selectedEvent?: Event;
 };
 
-export const FormCreateLessons: React.FC<FormProps> = ({
-  lessons,
-  start,
-  end,
+export const UpdateLessons: React.FC<FormProps> = ({
+  selectedEvent,
   closeModal,
 }) => {
-  const [createLessonsMutation, { error }] = useMutation(CREATE_LESSON, {
+  const [updateLessonsMutation, { error }] = useMutation(UPDATE_LESSON, {
     refetchQueries: [GET_All_LESSONS, "GetAllLessons"],
   });
 
   if (error) return <p>Something went wrong :(</p>;
 
   const onSubmit = (data: any) => {
-    createLessonsMutation({
+    updateLessonsMutation({
       variables: {
-        title: data.title,
+        id: selectedEvent?.resource.id,
+        title: selectedEvent?.title,
         description: data.description,
         subject: data.subject,
-        start: start,
-        end: end,
+        start: selectedEvent?.start,
+        end: selectedEvent?.end,
       },
     });
   };
@@ -38,10 +35,10 @@ export const FormCreateLessons: React.FC<FormProps> = ({
   return (
     <FormLessons
       onSubmit={onSubmit}
-      start={start}
-      end={end}
       closeModal={() => closeModal()}
-      lessons={lessons}
+      start={selectedEvent?.start as string | undefined}
+      end={selectedEvent?.end as string | undefined}
+      selectedEvent={selectedEvent}
     />
   );
 };
