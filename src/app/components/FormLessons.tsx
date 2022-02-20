@@ -1,26 +1,15 @@
 import * as React from "react";
 import { useForm, Controller } from "react-hook-form";
 import { Event } from "react-big-calendar";
-import { useMutation } from "@apollo/client";
-import {
-  CREATE_LESSON,
-  GET_All_LESSONS,
-  UPDATE_LESSON,
-  REMOVE_LESSON,
-} from "./data";
 import { Button, Form, Input } from "antd";
 
 type FormProps = {
-  title: string;
-  subject: string;
-  description: string;
-  lessons: Event[];
-  start: string | undefined;
-  end: string | undefined;
+  start?: string | undefined;
+  end?: string | undefined;
   closeModal: () => void;
-  createLessons: boolean;
-  updateLessons: boolean;
   selectedEvent?: Event;
+  onSubmit: (data: any) => void;
+  lessons: Event[];
 };
 
 const layout = {
@@ -29,61 +18,16 @@ const layout = {
 };
 
 export const FormLessons: React.FC<FormProps> = ({
-  lessons,
-  createLessons,
-  updateLessons,
   selectedEvent,
   start,
   end,
+  onSubmit,
   closeModal,
+  lessons,
 }) => {
   const { setValue, handleSubmit, control, reset } = useForm<FormProps>();
-
-  const [createLessonsMutation, { error }] = useMutation(CREATE_LESSON, {
-    refetchQueries: [GET_All_LESSONS, "GetAllLessons"],
-  });
-
-  if (error) return <p>Something went wrong :(</p>;
-
-  const onSubmit = handleSubmit((data) => {
-    console.log("inside submit");
-    if (createLessons) {
-      console.log("createLessons");
-      createLessonsMutation({
-        variables: {
-          title: data.title,
-          description: data.description,
-          subject: data.subject,
-          start: start,
-          end: end,
-        },
-      });
-      reset({
-        title: "",
-        subject: "",
-        start: "",
-        end: "",
-        description: "",
-      });
-    }
-    // if (updateLessons) {
-    //   // I have selected event as a prop
-    //   console.log("updateLessons");
-    //   updateLessonsMutation({
-    //     variables: {
-    //       id: selectedEvent?.resource.id,
-    //       title: data?.title,
-    //       description: data.description,
-    //       subject: data.subject,
-    //       start: selectedEvent?.start,
-    //       end: selectedEvent?.end,
-    //     },
-    //   });
-    // }
-  });
-
   return (
-    <Form {...layout} name="nest-messages" onFinish={onSubmit}>
+    <Form {...layout} name="nest-messages" onFinish={handleSubmit(onSubmit)}>
       <Form.Item name={["lesson", "title"]} label="lesson Title">
         <Controller
           render={({ value, onChange }) => (
@@ -91,7 +35,7 @@ export const FormLessons: React.FC<FormProps> = ({
           )}
           control={control}
           rules={{ required: true }}
-          name="title"
+          name={"title"}
           defaultValue={selectedEvent?.title || ""}
         />
       </Form.Item>
@@ -141,7 +85,10 @@ export const FormLessons: React.FC<FormProps> = ({
         <Button
           type="primary"
           htmlType="submit"
-          // onClick={() => closeModal()}
+          onClick={() => {
+            closeModal();
+            reset();
+          }}
         >
           Submit
         </Button>
