@@ -5,12 +5,14 @@ type modalProps = {
   onCancel: () => void;
   open: boolean;
   children: JSX.Element | JSX.Element[];
+  footer?: React.ReactNode;
 };
 
 export const ModalLessons: React.FC<modalProps> = ({
   onCancel,
   open,
   children,
+  footer,
 }) => {
   return (
     <div>
@@ -20,7 +22,7 @@ export const ModalLessons: React.FC<modalProps> = ({
         onCancel={() => {
           onCancel();
         }}
-        footer={null}
+        footer={footer}
       >
         <div>{children}</div>
       </Modal>
