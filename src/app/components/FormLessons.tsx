@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { Event } from "react-big-calendar";
 import { Button, Form, Input } from "antd";
@@ -23,9 +23,24 @@ export const FormLessons: React.FC<FormProps> = ({
   end,
   onSubmit,
   closeModal,
-  lessons,
 }) => {
-  const { setValue, handleSubmit, control, reset } = useForm<FormProps>();
+  const lessonDefaultValues = {
+    title: selectedEvent?.title || "",
+    subject: selectedEvent?.resource.subject || "",
+    start: (selectedEvent?.start as string | undefined) || "",
+    end: (selectedEvent?.end as string | undefined) || "",
+    description: selectedEvent?.resource.description || "",
+  };
+
+  const { setValue, handleSubmit, control, reset } = useForm<FormProps>({
+    defaultValues: lessonDefaultValues,
+  });
+
+  useEffect(() => {
+    reset(lessonDefaultValues);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedEvent]);
+
   return (
     <Form {...layout} name="nest-messages" onFinish={handleSubmit(onSubmit)}>
       <Form.Item name={["lesson", "title"]} label="lesson Title">
@@ -36,7 +51,7 @@ export const FormLessons: React.FC<FormProps> = ({
           control={control}
           rules={{ required: true }}
           name={"title"}
-          defaultValue={selectedEvent?.title || ""}
+          defaultValue={lessonDefaultValues.title}
         />
       </Form.Item>
       <Form.Item name={["lesson", "subject"]} label="Subject">
@@ -46,7 +61,7 @@ export const FormLessons: React.FC<FormProps> = ({
           )}
           name="subject"
           control={control}
-          defaultValue={selectedEvent?.resource.subject || ""}
+          defaultValue={lessonDefaultValues.subject}
           rules={{ required: true }}
         />
       </Form.Item>
@@ -57,7 +72,7 @@ export const FormLessons: React.FC<FormProps> = ({
           )}
           name="start"
           control={control}
-          defaultValue={selectedEvent?.start || ""}
+          defaultValue={lessonDefaultValues.start}
         />
       </Form.Item>
 
@@ -68,7 +83,7 @@ export const FormLessons: React.FC<FormProps> = ({
           )}
           name="end"
           control={control}
-          defaultValue={selectedEvent?.end || ""}
+          defaultValue={lessonDefaultValues.end}
         />
       </Form.Item>
       <Form.Item name={["lesson", "description"]} label="Description">
@@ -78,7 +93,7 @@ export const FormLessons: React.FC<FormProps> = ({
           )}
           name="description"
           control={control}
-          defaultValue={selectedEvent?.resource.description || ""}
+          defaultValue={lessonDefaultValues.description}
         />
       </Form.Item>
       <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 11 }}>
@@ -87,7 +102,6 @@ export const FormLessons: React.FC<FormProps> = ({
           htmlType="submit"
           onClick={() => {
             closeModal();
-            reset();
           }}
         >
           Submit
