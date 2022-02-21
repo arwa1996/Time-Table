@@ -31,7 +31,6 @@ export const UpdateLessons: React.FC<FormProps> = ({
       },
     });
   };
-
   return (
     <FormLessons
       onSubmit={onSubmit}
