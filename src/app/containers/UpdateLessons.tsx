@@ -30,11 +30,11 @@ export const UpdateLessons: React.FC<FormProps> = ({
         end: selectedEvent?.end,
       },
     });
+    closeModal();
   };
   return (
     <FormLessons
       onSubmit={onSubmit}
-      closeModal={() => closeModal()}
       start={selectedEvent?.start as string | undefined}
       end={selectedEvent?.end as string | undefined}
       selectedEvent={selectedEvent}

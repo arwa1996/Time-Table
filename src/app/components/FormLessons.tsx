@@ -6,7 +6,6 @@ import { Button, Form, Input } from "antd";
 type FormProps = {
   start?: string | undefined;
   end?: string | undefined;
-  closeModal: () => void;
   selectedEvent?: Event;
   onSubmit: (data: any) => void;
 };
@@ -21,7 +20,6 @@ export const FormLessons: React.FC<FormProps> = ({
   start,
   end,
   onSubmit,
-  closeModal,
 }) => {
   const lessonDefaultValues = {
     title: selectedEvent?.title || "",
@@ -48,9 +46,9 @@ export const FormLessons: React.FC<FormProps> = ({
             <Input value={value} onChange={onChange} />
           )}
           control={control}
-          rules={{ required: true }}
           name={"title"}
           defaultValue={lessonDefaultValues.title}
+          rules={{ required: true }}
         />
       </Form.Item>
       <Form.Item name={["lesson", "subject"]} label="Subject">
@@ -96,13 +94,7 @@ export const FormLessons: React.FC<FormProps> = ({
         />
       </Form.Item>
       <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 11 }}>
-        <Button
-          type="primary"
-          htmlType="submit"
-          onClick={() => {
-            closeModal();
-          }}
-        >
+        <Button type="primary" htmlType="submit">
           Submit
         </Button>
       </Form.Item>

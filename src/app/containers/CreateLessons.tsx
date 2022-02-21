@@ -30,14 +30,8 @@ export const CreateLessons: React.FC<FormProps> = ({
         end: end,
       },
     });
+    closeModal();
   };
 
-  return (
-    <FormLessons
-      onSubmit={onSubmit}
-      start={start}
-      end={end}
-      closeModal={() => closeModal()}
-    />
-  );
+  return <FormLessons onSubmit={onSubmit} start={start} end={end} />;
 };
