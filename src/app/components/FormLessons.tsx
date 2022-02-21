@@ -9,7 +9,6 @@ type FormProps = {
   closeModal: () => void;
   selectedEvent?: Event;
   onSubmit: (data: any) => void;
-  lessons?: Event[];
 };
 
 const layout = {
@@ -39,7 +38,7 @@ export const FormLessons: React.FC<FormProps> = ({
   useEffect(() => {
     reset(lessonDefaultValues);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedEvent]);
+  }, [selectedEvent, start, end]);
 
   return (
     <Form {...layout} name="nest-messages" onFinish={handleSubmit(onSubmit)}>
