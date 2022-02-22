@@ -8,8 +8,6 @@ export function HomePage(): JSX.Element {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
 
-  console.log("All lessons", data.allLessons);
-
   return (
     <div>
       <CalenderLessons lessonsList={data} />

@@ -1,2 +1,2 @@
 export * from "./ModalLessons";
-export * from "./CardLessons";
+export * from "./FormLessons";
