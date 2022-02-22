@@ -17,7 +17,7 @@ export const ModalLessons: React.FC<modalProps> = ({
   return (
     <div>
       <Modal
-        title="Basic Modal"
+        title="Lessons Modal"
         visible={open}
         onCancel={() => {
           onCancel();
