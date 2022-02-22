@@ -6,7 +6,7 @@ import { Button, Form, Input } from "antd";
 type FormProps = {
   start?: string | undefined;
   end?: string | undefined;
-  selectedEvent?: Event;
+  selectedLesson?: Event;
   onSubmit: (data: any) => void;
 };
 
@@ -16,17 +16,17 @@ const layout = {
 };
 
 export const FormLessons: React.FC<FormProps> = ({
-  selectedEvent,
+  selectedLesson,
   start,
   end,
   onSubmit,
 }) => {
   const lessonDefaultValues = {
-    title: selectedEvent?.title || "",
-    subject: selectedEvent?.resource.subject || "",
-    start: (selectedEvent?.start as string | undefined) || "",
-    end: (selectedEvent?.end as string | undefined) || "",
-    description: selectedEvent?.resource.description || "",
+    title: selectedLesson?.title || "",
+    subject: selectedLesson?.resource.subject || "",
+    start: (selectedLesson?.start as string | undefined) || "",
+    end: (selectedLesson?.end as string | undefined) || "",
+    description: selectedLesson?.resource.description || "",
   };
 
   const { setValue, handleSubmit, control, reset } = useForm<FormProps>({
@@ -36,7 +36,7 @@ export const FormLessons: React.FC<FormProps> = ({
   useEffect(() => {
     reset(lessonDefaultValues);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedEvent, start, end]);
+  }, [selectedLesson, start, end]);
 
   return (
     <Form {...layout} name="nest-messages" onFinish={handleSubmit(onSubmit)}>

@@ -8,12 +8,12 @@ import { ModalFunc } from "antd/lib/modal/confirm";
 
 type FormProps = {
   closeModal: () => void;
-  selectedEvent?: Event;
+  selectedLesson?: Event;
   confirm: ModalFunc;
 };
 
 export const DeleteLessons: React.FC<FormProps> = ({
-  selectedEvent,
+  selectedLesson,
   closeModal,
   confirm,
 }) => {
@@ -33,7 +33,7 @@ export const DeleteLessons: React.FC<FormProps> = ({
       onOk() {
         deleteLessonsMutation({
           variables: {
-            id: selectedEvent?.resource.id,
+            id: selectedLesson?.resource.id,
           },
         });
         closeModal();

@@ -6,11 +6,11 @@ import { FormLessons } from "../components/FormLessons";
 
 type FormProps = {
   closeModal: () => void;
-  selectedEvent?: Event;
+  selectedLesson?: Event;
 };
 
 export const UpdateLessons: React.FC<FormProps> = ({
-  selectedEvent,
+  selectedLesson,
   closeModal,
 }) => {
   const [updateLessonsMutation, { error }] = useMutation(UPDATE_LESSON, {
@@ -22,12 +22,12 @@ export const UpdateLessons: React.FC<FormProps> = ({
   const onSubmit = (data: any) => {
     updateLessonsMutation({
       variables: {
-        id: selectedEvent?.resource.id,
-        title: selectedEvent?.title,
+        id: selectedLesson?.resource.id,
+        title: selectedLesson?.title,
         description: data.description,
         subject: data.subject,
-        start: selectedEvent?.start,
-        end: selectedEvent?.end,
+        start: selectedLesson?.start,
+        end: selectedLesson?.end,
       },
     });
     closeModal();
@@ -35,9 +35,9 @@ export const UpdateLessons: React.FC<FormProps> = ({
   return (
     <FormLessons
       onSubmit={onSubmit}
-      start={selectedEvent?.start as string | undefined}
-      end={selectedEvent?.end as string | undefined}
-      selectedEvent={selectedEvent}
+      start={selectedLesson?.start as string | undefined}
+      end={selectedLesson?.end as string | undefined}
+      selectedLesson={selectedLesson}
     />
   );
 };

@@ -33,7 +33,7 @@ export const CalenderLessons: React.FC<calenderProps> = ({ lessonsList }) => {
   const [start, setStart] = useState<Date | string>();
   const [end, setEnd] = useState<Date | string>();
   const [createLesson, setCreateLesson] = useState(false);
-  const [selectedEvent, setSelectedEvent] = useState<Event>();
+  const [selectedLesson, setSelectedLesson] = useState<Event>();
   const [lessons, setLessons] = useState<Event[]>([]);
 
   const { confirm } = Modal;
@@ -68,10 +68,10 @@ export const CalenderLessons: React.FC<calenderProps> = ({ lessonsList }) => {
   const updateLessons = (event: Event): void => {
     setCreateLesson(false);
     setIsModalVisible(true);
-    setSelectedEvent(event);
+    setSelectedLesson(event);
   };
 
-  const moveEvent = (event: Event, start: string, end: string): void => {
+  const moveLesson = (event: Event, start: string, end: string): void => {
     moveLessonsMutation({
       variables: {
         id: event.resource.id,
@@ -95,7 +95,7 @@ export const CalenderLessons: React.FC<calenderProps> = ({ lessonsList }) => {
           start: stringOrDate;
           end: stringOrDate;
           isAllDay: boolean;
-        }) => moveEvent(args.event, args.start as string, args.end as string)}
+        }) => moveLesson(args.event, args.start as string, args.end as string)}
         onSelectSlot={(event) =>
           sendStartEndDate(event.start as string, event.end as string)
         }
@@ -105,8 +105,8 @@ export const CalenderLessons: React.FC<calenderProps> = ({ lessonsList }) => {
           start: stringOrDate;
           end: stringOrDate;
           isAllDay: boolean;
-        }) => moveEvent(args.event, args.start as string, args.end as string)}
-        eventPropGetter={(event) => eventStyleGetter(event)}
+        }) => moveLesson(args.event, args.start as string, args.end as string)}
+        eventPropGetter={(event) => lessonStyleGetter(event)}
       />
       <ModalLessons
         open={isModalVisible}
@@ -116,7 +116,7 @@ export const CalenderLessons: React.FC<calenderProps> = ({ lessonsList }) => {
             <DeleteLessons
               closeModal={() => setIsModalVisible(false)}
               confirm={confirm}
-              selectedEvent={selectedEvent}
+              selectedLesson={selectedLesson}
             />
           ) : null
         }
@@ -130,14 +130,14 @@ export const CalenderLessons: React.FC<calenderProps> = ({ lessonsList }) => {
         ) : (
           <UpdateLessons
             closeModal={() => setIsModalVisible(false)}
-            selectedEvent={selectedEvent}
+            selectedLesson={selectedLesson}
           />
         )}
       </ModalLessons>
     </>
   );
 };
-const eventStyleGetter = (_event: Event) => {
+const lessonStyleGetter = (_event: Event) => {
   var style = {
     border: "0px",
     display: "inline-table",
