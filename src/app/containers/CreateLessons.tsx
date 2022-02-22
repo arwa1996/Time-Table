@@ -20,12 +20,14 @@ export const CreateLessons: React.FC<FormProps> = ({
 
   if (error) return <p>Something went wrong :(</p>;
 
-  const onSubmit = (data: any) => {
+  const onSubmit = (data: {
+    lesson: { title: string; description: string; subject: string };
+  }) => {
     createLessonsMutation({
       variables: {
-        title: data.title,
-        description: data.description,
-        subject: data.subject,
+        title: data.lesson.title,
+        description: data.lesson.description,
+        subject: data.lesson.subject,
         start: start,
         end: end,
       },
