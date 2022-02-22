@@ -51,7 +51,6 @@ export const FormLessons: React.FC<FormProps> = ({
           )}
           control={control}
           name={"title"}
-          // defaultValue={lessonDefaultValues.title}
           rules={{ required: true }}
         />
       </Form.Item>
@@ -66,7 +65,6 @@ export const FormLessons: React.FC<FormProps> = ({
           )}
           name="subject"
           control={control}
-          //defaultValue={lessonDefaultValues.subject}
           rules={{ required: true }}
         />
       </Form.Item>
@@ -81,7 +79,6 @@ export const FormLessons: React.FC<FormProps> = ({
           )}
           name="start"
           control={control}
-          //  defaultValue={lessonDefaultValues.start}
         />
       </Form.Item>
 
@@ -96,7 +93,6 @@ export const FormLessons: React.FC<FormProps> = ({
           )}
           name="end"
           control={control}
-          // defaultValue={lessonDefaultValues.end}
         />
       </Form.Item>
       <Form.Item
@@ -110,7 +106,6 @@ export const FormLessons: React.FC<FormProps> = ({
           )}
           name="description"
           control={control}
-          // defaultValue={lessonDefaultValues.description}
         />
       </Form.Item>
       <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 11 }}>
