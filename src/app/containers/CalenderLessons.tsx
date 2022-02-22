@@ -82,15 +82,20 @@ export const CalenderLessons: React.FC<calenderProps> = ({ lessonsList }) => {
   };
 
   return (
-    <div>
+    <>
       <DragAndDropCalendar
         defaultView="week"
         selectable
+        resizable
         localizer={localizer}
         events={lessons}
-        startAccessor="start"
-        endAccessor="end"
-        style={{ height: 500 }}
+        views={["day", "week"]}
+        onEventResize={(args: {
+          event: Event;
+          start: stringOrDate;
+          end: stringOrDate;
+          isAllDay: boolean;
+        }) => moveEvent(args.event, args.start as string, args.end as string)}
         onSelectSlot={(event) =>
           sendStartEndDate(event.start as string, event.end as string)
         }
@@ -101,6 +106,7 @@ export const CalenderLessons: React.FC<calenderProps> = ({ lessonsList }) => {
           end: stringOrDate;
           isAllDay: boolean;
         }) => moveEvent(args.event, args.start as string, args.end as string)}
+        eventPropGetter={(event) => eventStyleGetter(event)}
       />
       <ModalLessons
         open={isModalVisible}
@@ -128,6 +134,15 @@ export const CalenderLessons: React.FC<calenderProps> = ({ lessonsList }) => {
           />
         )}
       </ModalLessons>
-    </div>
+    </>
   );
+};
+const eventStyleGetter = (_event: Event) => {
+  var style = {
+    border: "0px",
+    display: "inline-table",
+  };
+  return {
+    style: style,
+  };
 };
