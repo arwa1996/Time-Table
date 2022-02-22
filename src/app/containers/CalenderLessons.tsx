@@ -18,6 +18,7 @@ import { Modal } from "antd";
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
+import "./CalenderLessonsStyle.css";
 
 type calenderProps = {
   lessonsList: GetAllLessons;
@@ -107,7 +108,6 @@ export const CalenderLessons: React.FC<calenderProps> = ({ lessonsList }) => {
           end: stringOrDate;
           isAllDay: boolean;
         }) => moveLesson(args.event, args.start as string, args.end as string)}
-        eventPropGetter={(event) => lessonStyleGetter(event)}
       />
       <ModalLessons
         open={isModalVisible}
@@ -137,13 +137,4 @@ export const CalenderLessons: React.FC<calenderProps> = ({ lessonsList }) => {
       </ModalLessons>
     </>
   );
-};
-const lessonStyleGetter = (_event: Event) => {
-  var style = {
-    border: "0px",
-    display: "inline-table",
-  };
-  return {
-    style: style,
-  };
 };
