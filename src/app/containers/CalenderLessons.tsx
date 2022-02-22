@@ -84,12 +84,13 @@ export const CalenderLessons: React.FC<calenderProps> = ({ lessonsList }) => {
   return (
     <>
       <DragAndDropCalendar
+        style={{ height: 710 }}
         defaultView="week"
         selectable
         resizable
         localizer={localizer}
         events={lessons}
-        views={["day", "week"]}
+        views={["day", "week", "month"]}
         onEventResize={(args: {
           event: Event;
           start: stringOrDate;
