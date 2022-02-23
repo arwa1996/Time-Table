@@ -5,80 +5,80 @@
       "title": "React Native - The Practical Guide",
       "subject": "Mobile Applications",
       "description": "Mobile apps are one of the best ways to engage with users, no wonder everyone wants to build one! Wouldn't it be great if you could use your web development knowledge, combined with your React knowledge, to build mobile apps with that? That's exactly what React Native allows you to do!",
-      "start": "2022-02-16T12:30:00",
-      "end": "2022-02-16T14:30:00"
+      "start": "2022-02-25T12:30:00",
+      "end": "2022-02-25T14:30:00"
     },
     {
       "id": 2,
       "title": "JavaScript Algorithms and Data Structures Masterclass",
       "description": "This course crams months of computer science and interview prep material into 20 hours of video. The content is based directly on last semester of my in-person coding bootcamps, where my students go on to land 6-figure developer jobs. I cover the exact same computer science content that has helped my students ace interviews at huge companies like Google, Tesla, Amazon, and Facebook. ",
       "subject": "Data Structure",
-      "start": "2022-02-17T12:30:00",
-      "end": "2022-02-17T14:30:00"
+      "start": "2022-02-21T12:30:00",
+      "end": "2022-02-21T14:30:00"
     },
     {
       "id": 3,
       "title": "GraphQL with React: The Complete Developers Guide",
       "subject": "Frontend",
       "description": "This course will get you up and running with GraphQL quickly, and teach you the core knowledge you need to deeply understand and build React applications quickly.",
-      "start": "2022-02-18T12:30:00",
-      "end": "2022-02-18T14:30:00"
+      "start": "2022-02-22T12:30:00",
+      "end": "2022-02-22T14:30:00"
     },
     {
       "id": 4,
       "title": "Docker and Kubernetes: The Complete Guide",
       "subject": "Backend",
       "description": "This is the ultimate course to learn how to deploy any web application you can possibly dream up.  Docker and Kubernetes are the newest tech in the Dev Ops world, and have dramatically changed the flow of creating and deploying web apps",
-      "start": "2022-02-15T12:30:00",
-      "end": "2022-02-15T14:30:00"
+      "start": "2022-02-23T12:30:00",
+      "end": "2022-02-23T14:30:00"
     },
     {
       "id": 5,
       "title": "NodeJS - The Complete Guide (MVC, REST APIs, GraphQL, Deno)",
       "subject": "Backend",
       "description": "Node.js is probably THE most popular and modern server-side programming language you can dive into these days! Node.js developers are in high demand and the language is used for everything from traditional web apps with server-side rendered views over REST APIs all the way up to GraphQL APIs and real-time web services. Not to mention its applications in build workflows for projects of all sizes.This course will teach you all of that! From scratch with zero prior knowledge assumed.",
-      "start": "2022-02-14T12:30:00",
-      "end": "2022-02-14T14:30:00"
+      "start": "2022-02-24T12:30:00",
+      "end": "2022-02-24T14:30:00"
     },
     {
       "id": 6,
       "title": "Cypress test automation for people in a hurry",
       "subject": "Testing",
       "description": "This course is for testers, QAs, automation engineers or frontend developers who need to learn fast. Whether you are starting from scratch or are already familiar with test automation, this course is for you. It’s packed with quick explanatory videos, with no extra fluff, just the practical stuff. Every lesson gets straight to the point. It’s all code examples, problem solutions and how to-s.",
-      "start": "2022-02-14T15:30:00",
-      "end": "2022-02-14T16:30:00"
+      "start": "2022-02-21T15:30:00",
+      "end": "2022-02-21T16:30:00"
     },
     {
       "id": 7,
       "title": "Introduction to Java EE",
       "subject": "Computer Programming",
       "description": "This course will provide students with an overview of Java EE and will show some details of its programming model. You'll learn about what Java EE is, how it compares to the Java language, should you transition to it, and which type of application would benefit from it.",
-      "start": "2022-02-15T15:30:00",
-      "end": "2022-02-15T16:30:00"
+      "start": "2022-02-22T15:30:00",
+      "end": "2022-02-22T16:30:00"
     },
     {
       "id": 8,
       "title": "Typescript with React classes - quick start - Jest testing",
       "subject": "Frontend",
       "description": "Typescript is becoming more and more popular! And the beloved React framework has embraced it! But often making them work together can be tricky. Here it will work from the first try. React means act in response to something; respond in a particular way. This is the way you will make your UI behave. In this short course you will learn how you can use them together, by building a small project",
-      "start": "2022-02-16T16:30:00",
-      "end": "2022-02-16T17:30:00"
+      "start": "2022-02-25T16:30:00",
+      "end": "2022-02-25T17:30:00"
     },
     {
       "id": 9,
       "title": "Machine Learning A-Z™: Hands-On Python & R In Data Science",
       "subject": "Machine Learning",
       "description": "Interested in the field of Machine Learning? Then this course is for you! This course has been designed by two professional Data Scientists so that we can share our knowledge and help you learn complex theory, algorithms, and coding libraries in a simple way.",
-      "start": "2022-02-17T15:30:00",
-      "end": "2022-02-17T16:30:00"
+      "start": "2022-02-23T15:30:00",
+      "end": "2022-02-23T16:30:00"
     },
     {
       "id": 10,
       "title": "Angular Testing Masterclass",
       "subject": "Frontend",
       "description": "This video course, complete with a running Github repository is a complete step-by-step guide to Angular Testing in general. We are going to take a small sample application that is already completed, but that has no tests yet.",
-      "start": "2022-02-18T15:30:00",
-      "end": "2022-02-18T16:30:00"
+      "start": "2022-02-24T15:30:00",
+      "end": "2022-02-24T16:30:00"
     }
   ]
 }
