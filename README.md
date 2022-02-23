@@ -5,7 +5,15 @@
 
 > The app is a one page that display time table for the current week. Time table is a set of columns, each column represents a week day. Every day can have one or several lessons. stacked vertically.User is able to add, remove, edit lessons, and move lessons to another day.
 
-### ✨ [Demo](URL goes here )
+### ✨ [Deployment URL](https://time-table-eight.vercel.app/)
+
+Before clicking on the deployment URL please make sure to run
+
+```sh
+json-graphql-server graphql-schema.json --p 5000
+```
+
+In the root directory.
 
 ## Install dependencies
 
